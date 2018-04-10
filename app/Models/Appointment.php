@@ -24,6 +24,8 @@ class Appointment extends Model
 
     protected $fillable = ['user_id', 'status', 'scheduled_on', 'service_id'];
 
+    protected $with = ['service'];
+
     public function user()
     {
         return $this->belongsTo('App\Models\Auth\User\User');
