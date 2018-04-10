@@ -21,7 +21,7 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $appointments = Appointment::where('user_id', $user->id)->orderBy('scheduled_on', 'desc')->get();
+        $appointments = Appointment::where('user_id', $user->id)->where('status', '<>', 'CANCELED')->orderBy('scheduled_on', 'desc')->get();
         return response()->json($appointments);
     }
 
@@ -34,7 +34,7 @@ class AppointmentController extends Controller
      */
     public function filterByDate(Request $request)
     {
-        $appointments = Appointment::whereDate('scheduled_on', '=' , $request->date)->orderBy('scheduled_on', 'desc')->get();
+        $appointments = Appointment::whereDate('scheduled_on', '=' , $request->date)->where('status', '<>', 'CANCELED')->orderBy('scheduled_on', 'desc')->get();
         return response()->json($appointments);
     }
 
@@ -62,4 +62,14 @@ class AppointmentController extends Controller
 
         return response()->json($appointment);
     }
+
+
+    public function cancelAppointment(Appointment $appointment)
+    {
+        $appointment->status = 'CANCELED';
+        $appointment->save();
+
+        return response()->json($appointment);
+    }
+
 }

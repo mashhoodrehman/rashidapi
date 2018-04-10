@@ -28,6 +28,7 @@ Route::namespace('Api')->name('api.')->middleware('cors')->group(function () {
         Route::get('availabilities', 'AvailabilityController@index')->name('availabilities');
         Route::get('settings', 'SettingController@index')->name('settings');
         Route::post('support', 'SupportController@store')->name('support');
+        Route::get('appointments/{appointment}/cancel', 'AppointmentController@cancelAppointment')->name('appointment.cancel');
         Route::get('appointments', 'AppointmentController@index')->name('appointment.index');
         Route::post('appointments/filter-by-date', 'AppointmentController@filterByDate')->name('appointment.filterByDate');
         Route::post('appointments', 'AppointmentController@store')->name('appointment.store');
