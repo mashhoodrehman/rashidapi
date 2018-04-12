@@ -29,7 +29,9 @@ class SettingRequest extends FormRequest
             'doctor_name' => 'required',
             'mobile_number' => 'required',
             'email' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'latitude' => 'numeric',
+            'longitude' => 'numeric'
         ];
     }
 }

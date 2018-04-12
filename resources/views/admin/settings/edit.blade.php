@@ -121,6 +121,45 @@
                 </div>
             </div>
 
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="latitude">
+                    Latitude
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="latitude" type="text" value="{{$setting->latitude}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('latitude')) parsley-error @endif"
+                           name="latitude" required>
+                    @if($errors->has('latitude'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('latitude') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="longitude">
+                    Longitude
+                    <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="longitude" type="text" value="{{$setting->longitude}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('longitude')) parsley-error @endif"
+                           name="longitude" required>
+                    @if($errors->has('longitude'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('longitude') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                     <a class="btn btn-primary" href="{{ URL::previous() }}">Back</a>
