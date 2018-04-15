@@ -27,6 +27,6 @@ class LoginController extends Controller
             $token = $user->createToken('Default')->accessToken;
             return response()->json(["token" => $token, "user" => $user]);
         }
-        return response()->json(["error" => "Invalid Login"]);
+        return response()->json(["error" => "Invalid Login"], 400);
     }
 }
