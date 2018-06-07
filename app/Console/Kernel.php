@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Helpers\PushNotificationHelper;
+use App\Models\Appointment;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +27,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            $appointments = Appointment::whereRaw('scheduled_on = DATE_ADD(now(), INTERVAL 48 HOUR)')->get();
+            foreach ($appointments as $appointment) {
+                PushNotificationHelper::send($appointment->user->fcm_registration_id,
+                    'Appointment Reminder', 'You have an upcoming appointment on  ' . $appointment->scheduled_on->toDayDateTimeString(), []);
+            }
+        })->hourly();
     }
 
     /**
