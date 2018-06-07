@@ -62,6 +62,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('supports/{support}/delete', 'SupportController@destroy')->name('supports.destroy');
 
     Route::get('appointments', 'AppointmentController@index')->name('appointments');
+    Route::get('appointments/create', 'AppointmentController@create')->name('appointments.create');
+    Route::post('appointments', 'AppointmentController@store')->name('appointments.store');
     Route::get('appointments/{appointment}/edit', 'AppointmentController@edit')->name('appointments.edit');
     Route::put('appointments/{appointment}', 'AppointmentController@update')->name('appointments.update');
     Route::get('appointments/{appointment}/delete', 'AppointmentController@destroy')->name('appointments.destroy');

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\BlogRequest;
+use App\Http\Requests\Admin\AppointmentRequest;
 use App\Models\Appointment;
-use App\Models\Auth\Role\Role;
-use App\Models\Blog;
 use App\Models\Auth\User\User;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,83 +36,81 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('admin.blogs.create');
+        return view('admin.appointments.create', [
+            'services' => Service::all(),
+            'users' => User::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param BlogRequest $request
+     * @param AppointmentRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BlogRequest $request)
+    public function store(AppointmentRequest $request)
     {
-        $blog = new Blog();
+        $appointment = new Appointment();
 
-        $blog->fill($request->all());
+        $appointment->fill($request->all());
 
+        $appointment->save();
 
-        $path = $request->file('image')->store('uploads');
-        $blog->image_url = Storage::url($path);
-
-        $blog->save();
-
-        return redirect()->intended(route('admin.blogs'));
+        return redirect()->intended(route('admin.appointments'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Blog $blog
+     * @param Appointment $appointment
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Blog $blog)
+    public function show(Appointment $appointment)
     {
-        return view('admin.blogs.show', ['blog' => $blog]);
+        return view('admin.appointments.show', ['appointment' => $appointment]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Blog $blog
+     * @param Appointment $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Appointment $appointment)
     {
-        return view('admin.blogs.edit', ['blog' => $blog]);
+        return view('admin.appointments.edit', [
+            'appointment' => $appointment,
+            'services' => Service::all(),
+            'users' => User::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param BlogRequest $request
-     * @param Blog $blog
+     * @param AppointmentRequest $request
+     * @param Appointment $appointment
      * @return mixed
      */
-    public function update(BlogRequest $request, Blog $blog)
+    public function update(AppointmentRequest $request, Appointment $appointment)
     {
-        $blog->fill($request->all());
+        $appointment->fill($request->all());
 
-        if($request->image) {
-            $path = $request->file('image')->store('uploads');
-            $blog->image_url = Storage::url($path);
-        }
+        $appointment->save();
 
-        $blog->save();
-
-        return redirect()->intended(route('admin.blogs'));
+        return redirect()->intended(route('admin.appointments'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Blog $blog
+     * @param Appointment $appointment
      * @return mixed
      * @throws \Exception
      */
-    public function destroy(Blog $blog)
+    public function destroy(Appointment $appointment)
     {
-        $blog->delete();
-        return redirect()->intended(route('admin.blogs'));
+        $appointment->delete();
+        return redirect()->intended(route('admin.appointments'));
     }
 }

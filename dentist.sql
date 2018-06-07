@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 11:52 PM
+-- Generation Time: Apr 19, 2018 at 08:13 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -170,6 +170,14 @@ CREATE TABLE `oauth_clients` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Dentist Personal Access Client', '58iucQS8hFC1DyRkE4PxZj4ypwM7MIWgfEnr7fgu', 'http://localhost', 1, 0, 0, '2018-04-19 00:42:02', '2018-04-19 00:42:02'),
+(2, NULL, 'Dentist Password Grant Client', 'TEaonevPeBHEVOCOaiIcR3EfbZTp0VESOwz3kB3I', 'http://localhost', 0, 1, 0, '2018-04-19 00:42:02', '2018-04-19 00:42:02');
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +190,13 @@ CREATE TABLE `oauth_personal_access_clients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2018-04-19 00:42:02', '2018-04-19 00:42:02');
 
 -- --------------------------------------------------------
 
@@ -535,13 +550,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`

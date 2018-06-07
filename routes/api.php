@@ -21,6 +21,10 @@ Route::namespace('Api')->name('api.')->middleware('cors')->group(function () {
         Route::post('/forgot-password', 'RegisterController@sendResetLinkEmail')->name('forgotPassword');
     });
     Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('user', 'UserController@show')->name('user.show');
+        Route::put('user', 'UserController@update')->name('user.update');
+        Route::put('user/reset-password', 'UserController@resetPassword')->name('user.resetPassword');
+
         Route::get('services', 'ServiceController@index')->name('services');
         Route::get('blogs', 'BlogController@index')->name('blogs');
         Route::get('testimonials', 'TestimonialController@index')->name('testimonials');
