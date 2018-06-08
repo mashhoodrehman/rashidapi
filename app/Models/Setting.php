@@ -18,5 +18,7 @@ class Setting extends Model
 {
     protected $table = 'settings';
 
-    protected $fillable = ['app_title', 'clinic_name', 'doctor_name', 'mobile_number', 'email', 'address', 'latitude', 'longitude'];
+    protected $fillable = ['app_title', 'clinic_name', 'doctor_name', 'mobile_number', 'email', 'address',
+        'latitude', 'longitude', 'about_1', 'about_2', 'about_count_1', 'about_count_2', 'about_count_3',
+        'service_title', 'service_body'];
 }

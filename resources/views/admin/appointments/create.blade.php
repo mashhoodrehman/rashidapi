@@ -35,10 +35,14 @@
                     <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="scheduled_on" type="text" class="form-control col-md-7 col-xs-12 @if($errors->has('scheduled_on')) parsley-error @endif"
-                           name="scheduled_on" value="{{ old('scheduled_on') }}" placeholder="YYYY-MM-DD HH:MM:SS" required>
-                    <br/>
-                    Example: <strong>2018-06-11 15:30:00</strong>
+
+                    <div class='input-group date' id='myDatepicker2'>
+                        <input type='text' class="form-control col-md-7 col-xs-12 @if($errors->has('scheduled_on')) parsley-error @endif" name="scheduled_on" value="{{ old('scheduled_on') }}"/>
+                        <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                    </div>
+
                     @if($errors->has('scheduled_on'))
                         <ul class="parsley-errors-list filled">
                             @foreach($errors->get('scheduled_on') as $error)
@@ -103,4 +107,22 @@
             {{ Form::close() }}
         </div>
     </div>
+@endsection
+
+@section('styles')
+    @parent
+    {{ Html::style(mix('assets/admin/css/datetimepicker.css')) }}
+@endsection
+
+@section('scripts')
+    @parent
+    {{ Html::script(mix('assets/admin/js/datetimepicker.js')) }}
+
+    <script type="text/javascript">
+        $('#myDatepicker2').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            sideBySide: true,
+            stepping: 30
+        });
+    </script>
 @endsection

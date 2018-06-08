@@ -25,7 +25,7 @@ class AppointmentRequest extends FormRequest
     {
         return [
             'status' => 'required|in:RESERVED,CONFIRMED,CANCELED,SERVED',
-            'scheduled_on' => 'required|date_format:Y-m-d H:i:s|after_or_equal:today',
+            'scheduled_on' => 'required|date_format:Y-m-d H:i|after_or_equal:today',
             'service_id' => 'required|exists:services,id'
         ];
     }

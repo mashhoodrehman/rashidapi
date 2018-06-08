@@ -161,6 +161,132 @@
             </div>
 
             <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="about_1">
+                    About Us Section 1
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="about_1"
+                              class="form-control col-md-7 col-xs-12 @if($errors->has('about_1')) parsley-error @endif"
+                              name="about_1">{{$setting->about_1}}</textarea>
+                    @if($errors->has('about_1'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('about_1') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="about_2">
+                    About Us Section 2
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="about_2"
+                              class="form-control col-md-7 col-xs-12 @if($errors->has('about_2')) parsley-error @endif"
+                              name="about_2">{{$setting->about_2}}</textarea>
+                    @if($errors->has('about_2'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('about_2') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="about_count_1">
+                    About Us Count Text 1
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="about_count_1" type="text" value="{{$setting->about_count_1}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('about_count_1')) parsley-error @endif"
+                           name="about_count_1">
+                    @if($errors->has('about_count_1'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('about_count_1') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="about_count_2">
+                    About Us Count Text 2
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="about_count_2" type="text" value="{{$setting->about_count_2}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('about_count_2')) parsley-error @endif"
+                           name="about_count_2">
+                    @if($errors->has('about_count_2'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('about_count_2') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="about_count_3">
+                    About Us Count Text 3
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="about_count_3" type="text" value="{{$setting->about_count_3}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('about_count_3')) parsley-error @endif"
+                           name="about_count_3">
+                    @if($errors->has('about_count_3'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('about_count_3') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="service_title">
+                    Services Section Title
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="service_title" type="text" value="{{$setting->service_title}}"
+                           class="form-control col-md-7 col-xs-12 @if($errors->has('service_title')) parsley-error @endif"
+                           name="service_title">
+                    @if($errors->has('service_title'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('service_title') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="service_body">
+                    Services Section Detail
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <textarea id="service_body"
+                              class="form-control col-md-7 col-xs-12 @if($errors->has('service_body')) parsley-error @endif"
+                              name="service_body">{{$setting->service_body}}</textarea>
+                    @if($errors->has('service_body'))
+                        <ul class="parsley-errors-list filled">
+                            @foreach($errors->get('service_body') as $error)
+                                <li class="parsley-required">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                     <a class="btn btn-primary" href="{{ URL::previous() }}">Back</a>
                     <button type="submit" class="btn btn-success"> Save</button>

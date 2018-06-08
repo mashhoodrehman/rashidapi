@@ -31,7 +31,7 @@ class SettingRequest extends FormRequest
             'email' => 'required',
             'address' => 'required',
             'latitude' => 'numeric',
-            'longitude' => 'numeric'
+            'longitude' => 'numeric',
         ];
     }
 }

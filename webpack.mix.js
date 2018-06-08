@@ -137,3 +137,11 @@ mix.styles([
  |--------------------------------------------------------------------------
  |
  */
+mix.scripts([
+    'node_modules/gentelella/production/js/moment/moment.min.js',
+    'node_modules/gentelella/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+], 'public/assets/admin/js/datetimepicker.js').version();
+
+mix.styles([
+    'node_modules/gentelella/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
+], 'public/assets/admin/css/datetimepicker.css').version();
