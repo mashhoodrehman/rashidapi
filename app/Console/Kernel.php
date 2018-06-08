@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $appointments = Appointment::whereRaw('scheduled_on = DATE_ADD(now(), INTERVAL 48 HOUR)')->get();
+            $appointments = Appointment::whereRaw('TIMESTAMPDIFF(HOUR, scheduled_on, DATE_ADD(now(), INTERVAL 48 HOUR)) = 0')->get();
             foreach ($appointments as $appointment) {
                 PushNotificationHelper::send($appointment->user->fcm_registration_id,
                     'Appointment Reminder', 'You have an upcoming appointment on  ' . $appointment->scheduled_on->toDayDateTimeString(), []);
