@@ -38,11 +38,12 @@ class PushNotificationHelper
             $dataBuilder->addData($data);
 
             $option = $optionBuilder->build();
+            $notification = $notificationBuilder->build();
             $data = $dataBuilder->build();
 
             if ($token) {
                 Log::info('Sending Push notification', [$token]);
-                FCM::sendTo($token, $option, null, $data);
+                FCM::sendTo($token, $option, $notification, $data);
             }
         } catch (InvalidOptionException $e) {
             Log::info('Exception Push notification', [$e->getMessage()]);
