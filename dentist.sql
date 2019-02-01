@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2018 at 08:13 AM
+-- Generation Time: Jun 08, 2018 at 07:35 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -116,7 +116,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2018_03_22_183956_create_availabilities_table', 1),
 (16, '2018_03_22_183956_create_settings_table', 1),
 (17, '2018_03_22_183956_create_supports_table', 1),
-(18, '2018_03_22_203956_create_appointments_table', 1);
+(18, '2018_03_22_203956_create_appointments_table', 1),
+(19, '2018_03_25_183956_alter_settings_table', 1);
 
 -- --------------------------------------------------------
 
@@ -175,8 +176,8 @@ CREATE TABLE `oauth_clients` (
 --
 
 INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Dentist Personal Access Client', '58iucQS8hFC1DyRkE4PxZj4ypwM7MIWgfEnr7fgu', 'http://localhost', 1, 0, 0, '2018-04-19 00:42:02', '2018-04-19 00:42:02'),
-(2, NULL, 'Dentist Password Grant Client', 'TEaonevPeBHEVOCOaiIcR3EfbZTp0VESOwz3kB3I', 'http://localhost', 0, 1, 0, '2018-04-19 00:42:02', '2018-04-19 00:42:02');
+(1, NULL, 'Dentist Personal Access Client', 'ldsUfiJffxOT2axPmDVYKCLBVJmyTYOPmlIhwb0G', 'http://localhost', 1, 0, 0, '2018-06-08 00:04:48', '2018-06-08 00:04:48'),
+(2, NULL, 'Dentist Password Grant Client', 'UVX8QXNiVcVTwNV7jEpJgr1coX2s1sUgdJfFX7Pg', 'http://localhost', 0, 1, 0, '2018-06-08 00:04:48', '2018-06-08 00:04:48');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,7 @@ CREATE TABLE `oauth_personal_access_clients` (
 --
 
 INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2018-04-19 00:42:02', '2018-04-19 00:42:02');
+(1, 1, '2018-06-08 00:04:48', '2018-06-08 00:04:48');
 
 -- --------------------------------------------------------
 
@@ -275,15 +276,22 @@ CREATE TABLE `settings` (
   `latitude` decimal(15,7) DEFAULT NULL,
   `slot` int(11) NOT NULL DEFAULT '30',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `about_1` text COLLATE utf8mb4_unicode_ci,
+  `about_2` text COLLATE utf8mb4_unicode_ci,
+  `about_count_1` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_count_2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_count_3` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `service_title` text COLLATE utf8mb4_unicode_ci,
+  `service_body` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `settings`
 --
 
-INSERT INTO `settings` (`id`, `app_title`, `clinic_name`, `doctor_name`, `mobile_number`, `email`, `address`, `longitude`, `latitude`, `slot`, `created_at`, `updated_at`) VALUES
-(1, 'Dentist', 'Demo Clinic', 'Demo Doctor', '+91 9811995588', 'dentist@dentist.com', 'New Delhi', NULL, NULL, 30, NULL, NULL);
+INSERT INTO `settings` (`id`, `app_title`, `clinic_name`, `doctor_name`, `mobile_number`, `email`, `address`, `longitude`, `latitude`, `slot`, `created_at`, `updated_at`, `about_1`, `about_2`, `about_count_1`, `about_count_2`, `about_count_3`, `service_title`, `service_body`) VALUES
+(1, 'Dentist', 'Demo Clinic', 'Demo Doctor', '+91 9811995588', 'dentist@dentist.com', 'New Delhi', NULL, NULL, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -359,7 +367,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `password`, `fcm_registration_id`, `active`, `confirmation_code`, `confirmed`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Admin', 'admin@example.com', '8888888888', '$2y$10$8uqHbb/bjQUb6DrojdWoaeP0VrQEO3oVsQ/gho4snROooTABdztRe', NULL, 1, 'cd8eabe4-88a0-4b62-9709-42aafb8c6fa0', 1, NULL, '2018-04-15 16:21:29', '2018-04-15 16:21:29', NULL);
+(1, 'Admin', 'admin@example.com', '8888888888', '$2y$10$CkXmWupx62yS9qROu7V6c.c4WZWrSYWxeFstZzQaSkjy4oDfXmzXy', NULL, 1, '9b01bf38-d970-4ac6-a9dc-5d669c9412a4', 1, NULL, '2018-06-08 00:04:39', '2018-06-08 00:04:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -544,7 +552,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
